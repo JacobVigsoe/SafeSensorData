@@ -6,15 +6,6 @@
             "id": "2ba587bc-16f3-41b4-8189-4af350115ff4",
             "actions": [
                 {
-                    "name": "TouchPosition",
-                    "type": "Value",
-                    "id": "67213eb2-608b-4231-84c7-10a74e708ace",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "TouchPress",
                     "type": "Button",
                     "id": "79404d4e-d4b0-44a4-b049-f11eb803b5e5",
@@ -25,17 +16,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "162fd9e3-f892-44fb-b462-a49a5291db84",
-                    "path": "<Touchscreen>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TouchPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "14c7d84d-99c2-4b48-98ee-805e26d69b82",

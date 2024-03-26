@@ -16,7 +16,7 @@ public class TouchManager : MonoBehaviour
     private List<string> accelerometerData;
     private string directoryPath;
 
-    public Button startstopButton;
+    private float Maxtime = 10f;
 
     private float timer = 0;
     public TMP_Text TextTime; 
@@ -28,7 +28,6 @@ public class TouchManager : MonoBehaviour
 
     private void Awake()
     {
-        Displaytext.text = "Start";
         playerInput = GetComponent<PlayerInput>();
         touchPressAction = playerInput.actions["TouchPress"];
         directoryPath = Application.persistentDataPath + "/ExperimentData";
@@ -49,14 +48,12 @@ public class TouchManager : MonoBehaviour
     {
         if (!experimentRunning)
         {
-            startstopButton.image.color = Color.red;
             Displaytext2.text = "Throw your phone";
             Displaytext.text = "Stop";
             StartExperiment();
         }
         else
         {
-            startstopButton.image.color = Color.green;
             timer = 0;
             Displaytext2.text = "";
             Displaytext.text = "Start";
@@ -88,8 +85,8 @@ public class TouchManager : MonoBehaviour
 
     private IEnumerator RecordData()
     {
-
-        while (true)
+        float CurrentTime = 0f;
+        while (CurrentTime < Maxtime)
         {
             // Access accelerometer data
             Vector3 acceleration = Input.acceleration;
@@ -98,11 +95,15 @@ public class TouchManager : MonoBehaviour
             string dataEntry = $"{Time.time},{acceleration.x},{acceleration.y},{acceleration.z}";
             accelerometerData.Add(dataEntry);
 
+            CurrentTime += Time.deltaTime;
             timer += Time.deltaTime;
+
             TextTime.text = "Time: " + timer.ToString("F2");
             yield return null; // Wait for the next frame
         }
-
+        timer = 0;
+        Displaytext2.text = "";
+        Displaytext.text = "Start";
         StopExperiment();
     }
 
