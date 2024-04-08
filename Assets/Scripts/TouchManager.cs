@@ -109,11 +109,11 @@ public class TouchManager : MonoBehaviour
 
     private void SaveDataToFile()
     {
-        // Generate unique file name using timestamp
+        
         string fileName = "Experiment_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
         string filePath = Path.Combine(directoryPath, fileName);
 
-        // Create or append to the CSV file
+        
         using (StreamWriter writer = new StreamWriter(filePath))
         {
             foreach (string data in accelerometerData)
